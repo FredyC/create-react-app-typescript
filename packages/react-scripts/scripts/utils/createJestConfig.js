@@ -33,12 +33,13 @@ module.exports = (resolve, rootDir) => {
     transform: {
       '^.+\\.tsx?$': resolve('config/jest/typescriptTransform.js'),
       '^.+\\.css$': resolve('config/jest/cssTransform.js'),
-      '^(?!.*\\.(js|jsx|mjs|css|json)$)': resolve(
+      '^.+\\.(gql)$': resolve('config/jest/graphqlTransform.js'),
+      '^(?!.*\\.(js|jsx|mjs|css|json|gql)$)': resolve(
         'config/jest/fileTransform.js'
       ),
     },
     transformIgnorePatterns: [
-      '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|ts|tsx)$'
+      '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|ts|tsx)$',
     ],
     moduleNameMapper: {
       '^react-native$': 'react-native-web',
